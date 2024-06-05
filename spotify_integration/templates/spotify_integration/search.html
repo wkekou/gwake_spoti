@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Spoti Search</title>
+    <!-- Charger les tags statiques -->
+    {% load static %}
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="{% static 'spotify_integration/style.css' %}" rel="stylesheet">
+</head>
+<body>
+    <div class="container text-center mt-5">
+        <h1 class="display-4"><a href="{% url 'home' %}" class="text-decoration-none text-success">Spoti</a></h1>
+        <form method="post" class="form-inline justify-content-center mt-3">
+            {% csrf_token %}
+            <div class="form-group mx-sm-3 mb-2">
+                <input type="text" class="form-control" name="track_name" placeholder="Enter track name">
+            </div>
+            <button type="submit" class="btn btn-primary mb-2">Search</button>
+        </form>
+        {% if error %}
+            <p class="text-danger mt-3">{{ error }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>

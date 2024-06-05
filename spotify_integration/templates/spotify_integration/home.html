@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Spoti Home</title>
+    <!-- Charger les tags statiques -->
+    {% load static %}
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="{% static 'spotify_integration/style.css' %}" rel="stylesheet">
+</head>
+<body>
+    <div class="container text-center mt-5">
+        <h1 class="display-4 text-center">
+            <a href="{% url 'home' %}" class="text-decoration-none text-success">Spoti</a>
+        </h1>
+        <div class="mt-5">
+            <a href="{% url 'search_track' %}" class="btn btn-primary btn-lg">Search</a>
+        </div>
+    </div>
+</body>
+</html>

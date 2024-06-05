@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Result</title>
+    <!-- Charger les tags statiques -->
+    {% load static %}
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="{% static 'spotify_integration/style.css' %}" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="display-4 text-center">
+            <a href="{% url 'home' %}" class="text-decoration-none text-success">Spoti</a>
+        </h1>
+        <div class="mt-3">
+            {% if tracks %}
+                <div class="row">
+                    {% for track in tracks %}
+                        <div class="col-md-4 mb-4">
+                            <div class="card">
+                                <img src="{{ track.artist_image }}" class="card-img-top" alt="{{ track.artist }}">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ track.name }}</h5>
+                                    <p class="card-text"><strong>Artist:</strong> {{ track.artist }}</p>
+                                    <p class="card-text"><strong>Album:</strong> {{ track.album }}</p>
+                                    <a href="{{ track.url }}" target="_blank" class="btn btn-success">Listen on Spotify</a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="text-center mt-4">
+                    <a href="{% url 'search_track' %}" class="btn btn-danger">Clear Results and Search Again</a>
+                </div>
+            {% else %}
+                <p class="text-danger">Aucune piste trouvée.</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
