@@ -91,4 +91,3 @@ def search_track(request):
         context = {'tracks': tracks}
         return render(request, 'spotify_integration/search_result.html', context)
     return render(request, 'spotify_integration/search.html')
-
